@@ -10,7 +10,10 @@ st.title("Streamlit Logging App")
 
 placeholder = st.empty()
 
-def log_message():
+# Input box for logging interval
+interval = st.text_input("Enter logging interval (seconds):", "5")
+
+def log_message(logging_interval):
     while True:
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         message = f"Log message at {current_time}"
@@ -21,7 +24,14 @@ def log_message():
         # Log to standard output
         logging.info(message)
         
-        time.sleep(5)
+        time.sleep(logging_interval)
 
 if st.button('Start Logging'):
-    log_message()
+    try:
+        logging_interval = int(interval)
+        if logging_interval <= 0:
+            st.error("Logging interval must be a positive integer.")
+        else:
+            log_message(logging_interval)
+    except ValueError:
+        st.error("Please enter a valid integer for the logging interval.")
