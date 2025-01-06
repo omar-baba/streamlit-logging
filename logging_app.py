@@ -6,7 +6,7 @@ from datetime import datetime
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
-st.title("Streamlit Logging App, with button to start logging")
+st.title("Streamlit Logging App, with button to kick off logging")
 
 placeholder = st.empty()
 
