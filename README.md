@@ -1,1 +1,1 @@
-Test repo for streamlit, for tests
+Test repo for streamlit
